@@ -1,0 +1,104 @@
+buildscript {
+    repositories {
+        mavenCentral()
+        maven {
+            name = "forge"
+            url = "http://files.minecraftforge.net/maven"
+        }
+        maven {
+            name = "sonatype"
+            url = "https://oss.sonatype.org/content/repositories/snapshots/"
+        }
+    }
+    dependencies {
+        classpath 'net.minecraftforge.gradle:ForgeGradle:1.2-SNAPSHOT'
+        classpath "de.undercouch:gradle-download-task:3.1.2"
+    }
+}
+
+apply plugin: 'forge'
+import de.undercouch.gradle.tasks.download.Download
+
+sourceCompatibility = JavaVersion.VERSION_1_8
+targetCompatibility = JavaVersion.VERSION_1_8
+sourceCompatibility = 1.8
+targetCompatibility = 1.8
+
+version = "0.0.7"
+group= "lokko12.croploadcore" // http://maven.apache.org/guides/mini/guide-naming-conventions.html
+archivesBaseName = "CropLoadCore"
+
+minecraft {
+    version = "1.7.10-10.13.4.1558-1.7.10"
+    runDir = "eclipse"
+    replaceIn "croploadcore.java"
+    replace "@version@", project.version
+    runDir = "eclipse"
+}
+
+file "build.properties" withReader {
+    def prop = new Properties()
+    prop.load(it)
+    ext.config = new ConfigSlurper().parse prop
+}
+
+repositories {
+    mavenLocal()
+    maven {
+        name = "ic2"
+        url = "http://maven.ic2.player.to/"
+    }
+}
+
+
+dependencies {
+    compile "net.industrial-craft:industrialcraft-2:${config.ic2.version}:dev"
+}
+
+task getThaucraftDev(type: Download) {
+    onlyIf {
+        !file("libs/Thaumcraft-deobf-1.7.10-4.2.3.5.jar").exists()
+    }
+    src "https://minecraft.curseforge.com/projects/thaumcraft/files/2227552/download"
+    dest file("libs/Thaumcraft-deobf-1.7.10-4.2.3.5.jar")
+    mustRunAfter "deobfBinJar"
+    mustRunAfter "repackMinecraft"
+}
+
+task getGregTech(type: Download, dependsOn: "getThaucraftDev") {
+    onlyIf {
+        !file("libs/gregtech-${config.gregtech.version}-dev.jar").exists()
+    }
+    src "http://jenkins.usrv.de:8081/job/Gregtech-5-Unofficial/${config.gregtech.jenkinsbuild}/artifact/build/libs/gregtech-${config.gregtech.version}-dev.jar"
+    dest file("libs/gregtech-${config.gregtech.version}-dev.jar")
+    mustRunAfter "deobfBinJar"
+    mustRunAfter "repackMinecraft"
+}
+
+tasks.setupCIWorkspace.dependsOn getGregTech
+tasks.setupDevWorkspace.dependsOn getGregTech
+tasks.setupDecompWorkspace.dependsOn getGregTech
+tasks.compileJava.dependsOn getGregTech
+
+processResources
+{
+    // this will ensure that this task is redone when the versions change.
+    inputs.property "version", project.version
+    inputs.property "mcversion", project.minecraft.version
+
+    // replace stuff in mcmod.info, nothing else
+    from(sourceSets.main.resources.srcDirs) {
+        include 'mcmod.info'
+                
+        // replace version and mcversion
+        expand 'version':project.version, 'mcversion':project.minecraft.version
+    }
+        
+    // copy everything else, thats not the mcmod.info
+    from(sourceSets.main.resources.srcDirs) {
+        exclude 'mcmod.info'
+        expand 'version':project.version, 'mcversion':project.minecraft.version
+    }
+    
+    
+}

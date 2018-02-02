@@ -1,6 +1,12 @@
 package lokko12.croploadcore;
 
+import java.util.ArrayList;
+import java.util.HashSet;
+import java.util.List;
+import java.util.Set;
+
 import biomesoplenty.api.content.BOPCBlocks;
+import cpw.mods.fml.common.FMLLog;
 import ic2.api.crops.CropCard;
 import ic2.api.crops.Crops;
 import mods.natura.common.NContent;
@@ -23,15 +29,62 @@ public class OreDict {
 	}
 	
 	public static void BSget(String name, CropCard crop) {
-		int anz = OreDictionary.getOres(name).size();
-        ItemStack[] BaseSeeds = new ItemStack[anz];
-        OreDictionary.getOres(name).toArray(BaseSeeds);
-    	if (OreDictionary.getOres(name).size()!= 0)
-    		for (int i=0; i < anz; i++)
-            Crops.instance.registerBaseSeed(BaseSeeds[i],crop,1,1,1,1);
+			String hname;
+    		if (OreDictionary.getOres(name).size()!= 0)
+    		for (int i=0; i < OreDictionary.getOres(name).size(); i++)
+            Crops.instance.registerBaseSeed(OreDictionary.getOres(name).get(i),crop,1,1,1,1);
+    		if (name.contains("crop")) {
+    		hname=name.replace("crop", "seed");
+    		if (OreDictionary.getOres(name).size()!= 0)
+        	for (int i=0; i < OreDictionary.getOres(name).size(); i++)
+            Crops.instance.registerBaseSeed(OreDictionary.getOres(name).get(i),crop,1,1,1,1);
+    		}
+    		if (name.contains("seed")) {
+        	hname=name.replace("seed", "crop");
+        	if (OreDictionary.getOres(hname).size()!= 0)
+            for (int i=0; i < OreDictionary.getOres(hname).size(); i++)
+               Crops.instance.registerBaseSeed(OreDictionary.getOres(hname).get(i),crop,1,1,1,1);
+    		}
 	}
 	
-	public static void register() {
+	public static List<ItemStack> get_subtypes(List<Item> subtypes, boolean CleanList) {
+		//FMLLog.info("get_subtypes was called");
+		List<ItemStack> itemsgot = new ArrayList<ItemStack>();
+		List<Item> cleansubtypes = new ArrayList<Item>();
+		List<String> itemnames = new ArrayList<String>();
+		int j=0;
+		boolean k=false;
+		
+		if (CleanList) {
+		Set<Item> s = new HashSet<Item>(subtypes);
+	
+		cleansubtypes = new ArrayList<Item>(s);
+		}
+		else
+		cleansubtypes = new ArrayList<Item>(subtypes);
+		
+		for (int i = 0; i < cleansubtypes.size(); i++)
+		{
+		//FMLLog.info("i="+Integer.toString(i));
+		j=0;
+		k=false;
+		if (Operators.NOR((cleansubtypes.get(i).getClass().toString().contains("binnie")),(cleansubtypes.get(i).getClass().toString().contains("forestry")))) {
+		do {
+			//FMLLog.info("j="+Integer.toString(j));
+			if (j>0)
+			k = ((new ItemStack(cleansubtypes.get(i),1,j).getDisplayName()).equals(new ItemStack(cleansubtypes.get(i),1,0).getDisplayName())||((new ItemStack(cleansubtypes.get(i),1,j).getDisplayName()).contains("."))||((new ItemStack(cleansubtypes.get(i),1,j).getDisplayName()).contains(Integer.toString(j)))||((new ItemStack(cleansubtypes.get(i),1,j).getDisplayName()).equals(new ItemStack(cleansubtypes.get(i),1,(j+1)).getDisplayName())&&(new ItemStack(cleansubtypes.get(i),1,j).getDisplayName()).equals(new ItemStack(cleansubtypes.get(i),1,j+2).getDisplayName())));
+			if (!k)
+			itemsgot.add(new ItemStack(cleansubtypes.get(i),1,j));
+			j++;
+			//FMLLog.info(new ItemStack(cleansubtypes.get(i),1,j).getDisplayName());
+			//FMLLog.info("k="+Boolean.toString(!k));
+		}
+		while(!k);}
+		}
+	return itemsgot;
+}
+	
+	public static boolean register() {
 
 		if (isregistered==false){
 		//Grass
@@ -117,7 +170,7 @@ public class OreDict {
 		 	
 		 	//herb
 		 	OreDictionary.registerOre("listAllherb",new ItemStack(com.emoniph.witchery.Witchery.Items.SEEDS_GARLIC));
-		 	OreDictionary.registerOre("listAllherb",new ItemStack(com.emoniph.witchery.Witchery.Items.GENERIC,1,69));
+		 	OreDictionary.registerOre("listAllveggie",new ItemStack(com.emoniph.witchery.Witchery.Items.GENERIC,1,69));
 		 	
 		 	//Plants
 		 	OreDictionary.registerOre("cropGlintWeed",new ItemStack(com.emoniph.witchery.Witchery.Blocks.GLINT_WEED));
@@ -138,7 +191,8 @@ public class OreDict {
 			OreDictionary.registerOre("listAllseed", new ItemStack(com.emoniph.witchery.Witchery.Items.SEEDS_BELLADONNA));
 			
 			//items
-			OreDictionary.registerOre("itemWaterArtichoke", new ItemStack(com.emoniph.witchery.Witchery.Items.GENERIC,1,69));
+			//OreDictionary.registerOre("itemWaterArtichoke", new ItemStack(com.emoniph.witchery.Witchery.Items.GENERIC,1,69));
+			OreDictionary.registerOre("cropArtichoke", new ItemStack(com.emoniph.witchery.Witchery.Items.GENERIC,1,69));
 			OreDictionary.registerOre("itemWolfsBane", new ItemStack(com.emoniph.witchery.Witchery.Items.GENERIC,1,156));
 			OreDictionary.registerOre("itemMandrake", new ItemStack(com.emoniph.witchery.Witchery.Items.GENERIC,1,22));
 			OreDictionary.registerOre("itemSnowbell", new ItemStack(com.emoniph.witchery.Witchery.Items.GENERIC,1,78));
@@ -147,9 +201,15 @@ public class OreDict {
 			
 			//dusts
 			//OreDictionary.registerOre("dustQuicklime",new ItemStack(com.emoniph.witchery.Witchery.Items.GENERIC,1,16));
+			
+			if (ModsLoaded.BoP) {
+				OreDictionary.registerOre("cropEyebulb",new ItemStack(BOPCBlocks.flowers,1,13));
+				OreDictionary.registerOre("cropEyebulb",new ItemStack(BOPCBlocks.flowers,1,14));
+				}
 		 	}
 		 isregistered=true;
 		}
+		return isregistered;
 	}
 
 }

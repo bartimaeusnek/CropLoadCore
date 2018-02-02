@@ -1,5 +1,6 @@
 ### Windows ###
 
+/libs/witchery-1.7.10-0.24.1.jar
 thumbs.db
 *.db
 
@@ -11,7 +12,6 @@ thumbs.db
 .mtj.tmp/
 
 # Package Files #
-*.jar
 *.war
 *.ear
 *.txt
@@ -73,8 +73,6 @@ local.properties
 classes/
 
 /out/
-gradlew
-gradlew.bat
 
 # Linux
 *~
