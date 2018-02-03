@@ -93,8 +93,7 @@ public class OreDict {
 			OreDictionary.registerOre("cropGrass", new ItemStack(Item.getItemById(31),1,1));
 			OreDictionary.registerOre("cropGrass", new ItemStack(Item.getItemById(175),1,2));
 			OreDictionary.registerOre("cropGrass", new ItemStack(Item.getItemById(175),1,3));
-		if (ModsLoaded.BoP)
-		 {
+		if (ModsLoaded.BoP) {
 			 OreDictionary.registerOre("cropGrass",new ItemStack(BOPCBlocks.plants,1,0));
 			 OreDictionary.registerOre("cropGrass",new ItemStack(BOPCBlocks.plants,1,1));
 			 OreDictionary.registerOre("cropGrass",new ItemStack(BOPCBlocks.plants,1,2));
@@ -122,8 +121,7 @@ public class OreDict {
 		 	 OreDictionary.registerOre("cropVine",Item.getItemById(106));
 		 	 OreDictionary.registerOre("cropVines",Item.getItemById(106));
 		 
-		 if (ModsLoaded.BoP)
-		 {
+		 if (ModsLoaded.BoP){
 			 OreDictionary.registerOre("cropVine",new ItemStack(BOPCBlocks.flowerVine,1,0));
 			 OreDictionary.registerOre("cropFloweringVines",new ItemStack(BOPCBlocks.flowerVine,1,0));
 		 	 OreDictionary.registerOre("cropVine",new ItemStack(BOPCBlocks.ivy,1,0));
@@ -138,27 +136,26 @@ public class OreDict {
 		 OreDictionary.registerOre("cropCacti", new ItemStack(Item.getItemById(81),1,0));
 		 OreDictionary.registerOre("cropCactus", new ItemStack(Item.getItemById(81),1,0));
 		 
-		 if (ModsLoaded.Natura)
-		 {
+		 if (ModsLoaded.Natura){
 			 OreDictionary.registerOre("cropCacti",new ItemStack(NContent.saguaro));
 		 	 OreDictionary.registerOre("cropSaguaro",new ItemStack(NContent.saguaro));
 		 }
 		
-		 if (ModsLoaded.BoP)
-		 {
+		 if (ModsLoaded.BoP){
 			 OreDictionary.registerOre("cropCacti",new ItemStack(BOPCBlocks.plants,1,12));
 			 OreDictionary.registerOre("cropSmallCactus",new ItemStack(BOPCBlocks.plants,1,12));
 		 } 
 		 
 		 //berries
-		 if (ModsLoaded.BoP)
+		 if (ModsLoaded.BoP) {
 			OreDictionary.registerOre("cropBerry", new ItemStack(biomesoplenty.api.content.BOPCItems.food,1,0));
 		 	OreDictionary.registerOre("listAllberry", new ItemStack(biomesoplenty.api.content.BOPCItems.food,1,0));
-		 if (ModsLoaded.Natura)
+		 }
+		 if (ModsLoaded.Natura) {
 			OreDictionary.registerOre("cropSaguaroBerry", new ItemStack(NContent.seedFood,1,0));
 		 	OreDictionary.registerOre("listAllberry", new ItemStack(NContent.seedFood,1,0));
 		 	OreDictionary.registerOre("cropGooseberry",new ItemStack(NContent.berryItem,1,3));
-		 	
+		 }
 		 //TC Stuff
 		 	if (ModsLoaded.TC) {
 		 	OreDictionary.registerOre("cropShimmerleaf",thaumcraft.api.ItemApi.getBlock("blockCustomPlant",2));
