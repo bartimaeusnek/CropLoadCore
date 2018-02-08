@@ -24,7 +24,7 @@ targetCompatibility = JavaVersion.VERSION_1_8
 sourceCompatibility = 1.8
 targetCompatibility = 1.8
 
-version = "0.0.7"
+version = "0.0.8"
 group= "lokko12.croploadcore" // http://maven.apache.org/guides/mini/guide-naming-conventions.html
 archivesBaseName = "CropLoadCore"
 
@@ -89,7 +89,6 @@ processResources
     // replace stuff in mcmod.info, nothing else
     from(sourceSets.main.resources.srcDirs) {
         include 'mcmod.info'
-                
         // replace version and mcversion
         expand 'version':project.version, 'mcversion':project.minecraft.version
     }
@@ -97,7 +96,6 @@ processResources
     // copy everything else, thats not the mcmod.info
     from(sourceSets.main.resources.srcDirs) {
         exclude 'mcmod.info'
-        expand 'version':project.version, 'mcversion':project.minecraft.version
     }
     
     

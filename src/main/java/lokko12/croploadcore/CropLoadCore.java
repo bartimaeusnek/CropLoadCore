@@ -5,6 +5,7 @@ import org.apache.logging.log4j.LogManager;
 import cpw.mods.fml.common.Mod;
 import cpw.mods.fml.common.Mod.EventHandler;
 import cpw.mods.fml.common.Mod.Instance;
+import cpw.mods.fml.common.event.FMLInitializationEvent;
 import cpw.mods.fml.common.event.FMLPreInitializationEvent;
 
 @Mod(
@@ -21,6 +22,10 @@ public class CropLoadCore {
 	@EventHandler
 	public void preInit(FMLPreInitializationEvent preinit) {
 	ModsLoaded.check_init("bartimaeusnek's mods");
+	}
+	
+	@EventHandler
+	public void Init(FMLInitializationEvent init) {
 	OreDict.register();
 	}
 }

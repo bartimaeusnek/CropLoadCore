@@ -153,7 +153,7 @@ public class OreDict {
 		 }
 		 if (ModsLoaded.Natura) {
 			OreDictionary.registerOre("cropSaguaroBerry", new ItemStack(NContent.seedFood,1,0));
-		 	OreDictionary.registerOre("listAllberry", new ItemStack(NContent.seedFood,1,0));
+		 	//OreDictionary.registerOre("listAllberry", new ItemStack(NContent.seedFood,1,0));
 		 	OreDictionary.registerOre("cropGooseberry",new ItemStack(NContent.berryItem,1,3));
 		 }
 		 //TC Stuff
@@ -195,7 +195,7 @@ public class OreDict {
 			OreDictionary.registerOre("itemSnowbell", new ItemStack(com.emoniph.witchery.Witchery.Items.GENERIC,1,78));
 			OreDictionary.registerOre("itemBelladonna", new ItemStack(com.emoniph.witchery.Witchery.Items.GENERIC,1,21));
 			//OreDictionary.registerOre("itemGypsum",new ItemStack(com.emoniph.witchery.Witchery.Items.GENERIC,1,17));
-			
+			 
 			//dusts
 			//OreDictionary.registerOre("dustQuicklime",new ItemStack(com.emoniph.witchery.Witchery.Items.GENERIC,1,16));
 			
@@ -203,8 +203,26 @@ public class OreDict {
 				OreDictionary.registerOre("cropEyebulb",new ItemStack(BOPCBlocks.flowers,1,13));
 				OreDictionary.registerOre("cropEyebulb",new ItemStack(BOPCBlocks.flowers,1,14));
 				}
+			
+			for (int i=0;i<OreDictionary.getOres("cropBlackberry").size();i++)
+				if (!OreDictionary.getOres("listAllberry").contains(OreDictionary.getOres("cropBlackberry").get(i)))
+				OreDictionary.registerOre("listAllberry", OreDictionary.getOres("cropBlackberry").get(i));
+			for (int i=0;i<OreDictionary.getOres("cropBlueberry").size();i++)
+				if (!OreDictionary.getOres("listAllberry").contains(OreDictionary.getOres("cropBlueberry").get(i)))
+				OreDictionary.registerOre("listAllberry", OreDictionary.getOres("cropBlueberry").get(i));
+			for (int i=0;i<OreDictionary.getOres("cropGooseberry").size();i++)
+				if (!OreDictionary.getOres("listAllberry").contains(OreDictionary.getOres("cropGooseberry").get(i)))
+				OreDictionary.registerOre("listAllberry", OreDictionary.getOres("cropGooseberry").get(i));
+			for (int i=0;i<OreDictionary.getOres("cropRaspberry").size();i++)
+				if (!OreDictionary.getOres("listAllberry").contains(OreDictionary.getOres("cropRaspberry").get(i)))
+				OreDictionary.registerOre("listAllberry", OreDictionary.getOres("cropRaspberry").get(i));
+			for (int i=0;i<OreDictionary.getOres("cropStrawberry").size();i++)
+				if (!OreDictionary.getOres("listAllberry").contains(OreDictionary.getOres("cropStrawberry").get(i)))
+				OreDictionary.registerOre("listAllberry", OreDictionary.getOres("cropStrawberry").get(i));
 		 	}
+		 	
 		 isregistered=true;
+		 CropLoadCore.CLClogger.info("Plants registered to OreDict.");
 		}
 		return isregistered;
 	}
