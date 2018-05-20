@@ -1,4 +1,4 @@
-package lokko12.croploadcore;
+package com.github.bartimaeusnek.croploadcore;
 
 import cpw.mods.fml.common.FMLLog;
 import net.minecraft.block.Block;
