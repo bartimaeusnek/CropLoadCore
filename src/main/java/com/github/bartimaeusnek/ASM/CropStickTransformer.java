@@ -1,4 +1,4 @@
-package lokko12.ASM;
+package com.github.bartimaeusnek.ASM;
 
 
 import java.util.Arrays;
@@ -14,7 +14,6 @@ import org.objectweb.asm.tree.MethodInsnNode;
 import org.objectweb.asm.tree.MethodNode;
 import org.objectweb.asm.tree.VarInsnNode;
 
-import lokko12.croploadcore.CropLoadCore;
 import net.minecraft.launchwrapper.IClassTransformer;
 
 public class CropStickTransformer implements IClassTransformer {
@@ -44,7 +43,7 @@ public class CropStickTransformer implements IClassTransformer {
 			case 0:
 			switch (method) {
 			case 0:{
-			CropLoadCore.CLClogger.info("[ASM] Patching CropBlock to be placeable on any soil");
+			CropLoadCoreASM.cppASMlogger.info("[ASM] Patching CropBlock to be placeable on any soil");
 			final String methodToPatch = "canPlaceBlockAt";
 			final String methodToPatch_obf = "func_149742_c";
 			String name = isObfuscated?methodToPatch:methodToPatch_obf;
@@ -63,7 +62,7 @@ public class CropStickTransformer implements IClassTransformer {
 			        insnList.add(new VarInsnNode(Opcodes.ILOAD, 2));
 			        insnList.add(new VarInsnNode(Opcodes.ILOAD, 3));
 			        insnList.add(new VarInsnNode(Opcodes.ILOAD, 4));
-			        insnList.add(new MethodInsnNode(Opcodes.INVOKESTATIC, "lokko12/ASM/CropStickTransformerReplaceMethod", "patchedcanPlaceBlockAt", desc, false));
+			        insnList.add(new MethodInsnNode(Opcodes.INVOKESTATIC, "com/github/bartimaeusnek/ASM/CropStickTransformerReplaceMethod", "patchedcanPlaceBlockAt", desc, false));
 			        insnList.add(new InsnNode(Opcodes.IRETURN));
 			        methodNode.instructions = insnList;
 			    }
@@ -74,7 +73,7 @@ public class CropStickTransformer implements IClassTransformer {
 			}
 			
 			case 1:{
-				CropLoadCore.CLClogger.info("[ASM] Patching CropBlock to not pop off when neighbours change");
+				CropLoadCoreASM.cppASMlogger.info("[ASM] Patching CropBlock to not pop off when neighbours change");
 				String methodToPatch = "onNeighborBlockChange";
 				String methodToPatch_obf = "func_149695_a";
 				String name = isObfuscated?methodToPatch:methodToPatch_obf;
@@ -94,7 +93,7 @@ public class CropStickTransformer implements IClassTransformer {
 				        insnList.add(new VarInsnNode(Opcodes.ILOAD, 3));
 				        insnList.add(new VarInsnNode(Opcodes.ILOAD, 4));
 				        insnList.add(new VarInsnNode(Opcodes.ALOAD, 5));
-				        insnList.add(new MethodInsnNode(Opcodes.INVOKESTATIC, "lokko12/ASM/CropStickTransformerReplaceMethod", "patchedonNeighborBlockChange", desc, false));
+				        insnList.add(new MethodInsnNode(Opcodes.INVOKESTATIC, "com/github/bartimaeusnek/ASM/CropStickTransformerReplaceMethod", "patchedonNeighborBlockChange", desc, false));
 				        insnList.add(new InsnNode(Opcodes.RETURN));
 				        methodNode.instructions = insnList;
 				    }
@@ -117,7 +116,7 @@ public class CropStickTransformer implements IClassTransformer {
 			mv.visitVarInsn(Opcodes.ILOAD, 1);
 			mv.visitVarInsn(Opcodes.ILOAD, 2);
 			mv.visitVarInsn(Opcodes.ILOAD, 3);
-			mv.visitMethodInsn(Opcodes.INVOKESTATIC, "lokko12/ASM/CropStickTransformerReplaceMethod", "patchedcanPlaceBlockAt", desc, false);
+			mv.visitMethodInsn(Opcodes.INVOKESTATIC, "com/github/bartimaeusnek/ASM/CropStickTransformerReplaceMethod", "patchedcanPlaceBlockAt", desc, false);
 			mv.visitInsn(Opcodes.IRETURN);
 			mv.visitEnd();
 

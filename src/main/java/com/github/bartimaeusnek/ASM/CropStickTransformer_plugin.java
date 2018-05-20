@@ -1,12 +1,11 @@
-package lokko12.ASM;
+package com.github.bartimaeusnek.ASM;
 
 import java.util.Map;
 
 import cpw.mods.fml.relauncher.IFMLLoadingPlugin;
-import lokko12.croploadcore.CropLoadCore;
 
 @IFMLLoadingPlugin.MCVersion("1.7.10")
-@IFMLLoadingPlugin.TransformerExclusions({"lokko12.ASM"})
+@IFMLLoadingPlugin.TransformerExclusions({"com.github.bartimaeusnek.ASM"})
 @IFMLLoadingPlugin.Name(CropStickTransformer_plugin.NAME)
 public class CropStickTransformer_plugin implements IFMLLoadingPlugin {
 
@@ -18,7 +17,7 @@ public class CropStickTransformer_plugin implements IFMLLoadingPlugin {
 
 	@Override
 	public String getModContainerClass() {
-		return CropLoadCore.class.getName();
+		return CropLoadCoreASM.class.getName();
 	}
 
 	@Override

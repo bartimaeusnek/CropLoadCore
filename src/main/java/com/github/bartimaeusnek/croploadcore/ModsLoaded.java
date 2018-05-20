@@ -1,6 +1,5 @@
-package lokko12.croploadcore;
+package com.github.bartimaeusnek.croploadcore;
 
-import lokko12.croploadcore.CropLoadCore;
 import cpw.mods.fml.common.Loader;
 
 public class ModsLoaded {

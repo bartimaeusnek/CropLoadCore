@@ -1,7 +1,6 @@
-package lokko12.croploadcore.oredict;
+package com.github.bartimaeusnek.croploadcore.oredict;
 
 import biomesoplenty.api.content.BOPCBlocks;
-import lokko12.croploadcore.ModsLoaded;
 import net.minecraft.item.ItemStack;
 import net.minecraftforge.oredict.OreDictionary;
 

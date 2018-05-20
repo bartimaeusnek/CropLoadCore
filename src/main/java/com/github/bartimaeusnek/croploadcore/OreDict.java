@@ -1,17 +1,18 @@
-package lokko12.croploadcore;
+package com.github.bartimaeusnek.croploadcore;
 
 import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 
+import com.github.bartimaeusnek.croploadcore.oredict.RegisterBoP;
+import com.github.bartimaeusnek.croploadcore.oredict.RegisterNatura;
+import com.github.bartimaeusnek.croploadcore.oredict.RegisterThaumcraft;
+import com.github.bartimaeusnek.croploadcore.oredict.RegisterTinkersConstruct;
+import com.github.bartimaeusnek.croploadcore.oredict.RegisterWitchery;
+
 import ic2.api.crops.CropCard;
 import ic2.api.crops.Crops;
-import lokko12.croploadcore.oredict.RegisterBoP;
-import lokko12.croploadcore.oredict.RegisterNatura;
-import lokko12.croploadcore.oredict.RegisterThaumcraft;
-import lokko12.croploadcore.oredict.RegisterTinkersConstruct;
-import lokko12.croploadcore.oredict.RegisterWitchery;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraftforge.oredict.OreDictionary;

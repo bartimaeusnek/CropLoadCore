@@ -1,4 +1,4 @@
-package lokko12.croploadcore;
+package com.github.bartimaeusnek.croploadcore;
 
 public class Operators {
 	

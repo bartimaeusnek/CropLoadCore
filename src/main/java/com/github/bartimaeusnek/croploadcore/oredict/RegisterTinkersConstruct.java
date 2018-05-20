@@ -1,4 +1,4 @@
-package lokko12.croploadcore.oredict;
+package com.github.bartimaeusnek.croploadcore.oredict;
 
 import net.minecraft.item.ItemStack;
 import net.minecraftforge.oredict.OreDictionary;

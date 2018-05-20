@@ -1,4 +1,4 @@
-package lokko12.croploadcore.oredict;
+package com.github.bartimaeusnek.croploadcore.oredict;
 
 import mods.natura.common.NContent;
 import net.minecraft.item.ItemStack;

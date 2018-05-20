@@ -1,11 +1,9 @@
-package lokko12.ASM;
+package com.github.bartimaeusnek.ASM;
 
 import cpw.mods.fml.common.registry.GameRegistry;
-import ic2.core.crop.BlockCrop;
 import ic2.core.crop.TileEntityCrop;
 import net.minecraft.block.Block;
 import net.minecraft.init.Blocks;
-import net.minecraft.init.Items;
 import net.minecraft.item.ItemSeedFood;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.world.World;
