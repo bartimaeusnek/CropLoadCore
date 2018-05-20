@@ -26,7 +26,8 @@ sourceCompatibility = 1.8
 targetCompatibility = 1.8
 
 version = "0.1.0"
-group= "lokko12.croploadcore" // http://maven.apache.org/guides/mini/guide-naming-conventions.html
+
+group= "com.github.bartimaeusnek.croploadcore" // http://maven.apache.org/guides/mini/guide-naming-conventions.html
 archivesBaseName = "CropLoadCore"
 
 minecraft {
@@ -37,9 +38,10 @@ minecraft {
     runDir = "eclipse"
 }
 jar {
+	archiveName = archivesBaseName + "-" + version + ".jar"
     manifest {
-        attributes 'FMLCorePlugin': 'lokko12.ASM.CropStickTransformer_plugin'
-        attributes 'FMLCorePluginContainsMod': 'true'
+        attributes 'FMLCorePlugin': 'com.github.bartimaeusnek.ASM.CropStickTransformer_plugin'
+        attributes 'FMLCorePluginContainsFMLMod': 'true'
     }
 }
 file "build.properties" withReader {
