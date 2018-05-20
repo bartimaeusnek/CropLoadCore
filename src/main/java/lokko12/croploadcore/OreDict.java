@@ -5,16 +5,16 @@ import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 
-import biomesoplenty.api.content.BOPCBlocks;
-import cpw.mods.fml.common.FMLLog;
 import ic2.api.crops.CropCard;
 import ic2.api.crops.Crops;
-import mods.natura.common.NContent;
-import net.minecraft.block.Block;
+import lokko12.croploadcore.oredict.RegisterBoP;
+import lokko12.croploadcore.oredict.RegisterNatura;
+import lokko12.croploadcore.oredict.RegisterThaumcraft;
+import lokko12.croploadcore.oredict.RegisterTinkersConstruct;
+import lokko12.croploadcore.oredict.RegisterWitchery;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraftforge.oredict.OreDictionary;
-import tconstruct.world.TinkerWorld;
 
 public class OreDict {
 	private static boolean isregistered = false;
@@ -87,139 +87,47 @@ public class OreDict {
 	public static boolean register() {
 
 		if (isregistered==false){
-		//Grass
-			OreDictionary.registerOre("cropGrass", new ItemStack(Item.getItemById(32),1,0));
-			OreDictionary.registerOre("cropGrass", new ItemStack(Item.getItemById(31),1,2));
-			OreDictionary.registerOre("cropGrass", new ItemStack(Item.getItemById(31),1,1));
-			OreDictionary.registerOre("cropGrass", new ItemStack(Item.getItemById(175),1,2));
-			OreDictionary.registerOre("cropGrass", new ItemStack(Item.getItemById(175),1,3));
-		if (ModsLoaded.BoP) {
-			 OreDictionary.registerOre("cropGrass",new ItemStack(BOPCBlocks.plants,1,0));
-			 OreDictionary.registerOre("cropGrass",new ItemStack(BOPCBlocks.plants,1,1));
-			 OreDictionary.registerOre("cropGrass",new ItemStack(BOPCBlocks.plants,1,2));
-			 OreDictionary.registerOre("cropGrass",new ItemStack(BOPCBlocks.plants,1,3));
-			 OreDictionary.registerOre("cropGrass",new ItemStack(BOPCBlocks.foliage,1,1));
-			 OreDictionary.registerOre("cropGrass",new ItemStack(BOPCBlocks.foliage,1,2));
-			 OreDictionary.registerOre("cropGrass",new ItemStack(BOPCBlocks.foliage,1,5));
-			 OreDictionary.registerOre("cropGrass",new ItemStack(BOPCBlocks.foliage,1,7));
-			 OreDictionary.registerOre("cropGrass",new ItemStack(BOPCBlocks.foliage,1,9));
-			 OreDictionary.registerOre("cropGrass",new ItemStack(BOPCBlocks.foliage,1,10));
-			 OreDictionary.registerOre("cropGrass",new ItemStack(BOPCBlocks.foliage,1,11));
-			 OreDictionary.registerOre("cropGrass",new ItemStack(BOPCBlocks.foliage,1,12));
-			 OreDictionary.registerOre("cropGrass",new ItemStack(BOPCBlocks.foliage,1,13)); 
-		 }
-		 
+
 		if (ModsLoaded.TConstruct) {
-			 OreDictionary.registerOre("cropGrass",new ItemStack(TinkerWorld.slimeGrass,1,0));
-			 OreDictionary.registerOre("cropGrass",new ItemStack(TinkerWorld.slimeTallGrass,1,0));
+			RegisterTinkersConstruct.register();
 	 	}
-		 if (ModsLoaded.TC) {
-			 OreDictionary.registerOre("cropGrass",thaumcraft.api.ItemApi.getBlock("blockTaintFibres",1));
-		 }
-		 
-		 //Vines
-		 	 OreDictionary.registerOre("cropVine",Item.getItemById(106));
-		 	 OreDictionary.registerOre("cropVines",Item.getItemById(106));
-		 
-		 if (ModsLoaded.BoP){
-			 OreDictionary.registerOre("cropVine",new ItemStack(BOPCBlocks.flowerVine,1,0));
-			 OreDictionary.registerOre("cropFloweringVines",new ItemStack(BOPCBlocks.flowerVine,1,0));
-		 	 OreDictionary.registerOre("cropVine",new ItemStack(BOPCBlocks.ivy,1,0));
-		 	 OreDictionary.registerOre("cropIvy",new ItemStack(BOPCBlocks.ivy,1,0));
-		 }
 		
-		 if (ModsLoaded.Natura) {
-			 OreDictionary.registerOre("cropVine",new ItemStack(NContent.thornVines));
-			 OreDictionary.registerOre("cropThornVines",new ItemStack(NContent.thornVines));
-		 }
-		 //Cacti
-		 OreDictionary.registerOre("cropCacti", new ItemStack(Item.getItemById(81),1,0));
-		 OreDictionary.registerOre("cropCactus", new ItemStack(Item.getItemById(81),1,0));
-		 
-		 if (ModsLoaded.Natura){
-			 OreDictionary.registerOre("cropCacti",new ItemStack(NContent.saguaro));
-		 	 OreDictionary.registerOre("cropSaguaro",new ItemStack(NContent.saguaro));
-		 }
+		if (ModsLoaded.TC) {
+			RegisterThaumcraft.register();
+		}
 		
-		 if (ModsLoaded.BoP){
-			 OreDictionary.registerOre("cropCacti",new ItemStack(BOPCBlocks.plants,1,12));
-			 OreDictionary.registerOre("cropSmallCactus",new ItemStack(BOPCBlocks.plants,1,12));
-		 } 
-		 
-		 //berries
-		 if (ModsLoaded.BoP) {
-			OreDictionary.registerOre("cropBerry", new ItemStack(biomesoplenty.api.content.BOPCItems.food,1,0));
-		 	OreDictionary.registerOre("listAllberry", new ItemStack(biomesoplenty.api.content.BOPCItems.food,1,0));
-		 }
-		 if (ModsLoaded.Natura) {
-			OreDictionary.registerOre("cropSaguaroBerry", new ItemStack(NContent.seedFood,1,0));
-		 	//OreDictionary.registerOre("listAllberry", new ItemStack(NContent.seedFood,1,0));
-		 	OreDictionary.registerOre("cropGooseberry",new ItemStack(NContent.berryItem,1,3));
-		 }
-		 //TC Stuff
-		 	if (ModsLoaded.TC) {
-		 	OreDictionary.registerOre("cropShimmerleaf",thaumcraft.api.ItemApi.getBlock("blockCustomPlant",2));
-		 	OreDictionary.registerOre("cropCinderpearl",thaumcraft.api.ItemApi.getBlock("blockCustomPlant",3));
-		 	}
-		 	
-		 //witchery Stuff
-		 	if (ModsLoaded.witchery) {
-		 	
-		 	//herb
-		 	OreDictionary.registerOre("listAllherb",new ItemStack(com.emoniph.witchery.Witchery.Items.SEEDS_GARLIC));
-		 	OreDictionary.registerOre("listAllveggie",new ItemStack(com.emoniph.witchery.Witchery.Items.GENERIC,1,69));
-		 	
-		 	//Plants
-		 	OreDictionary.registerOre("cropGlintWeed",new ItemStack(com.emoniph.witchery.Witchery.Blocks.GLINT_WEED));
-			OreDictionary.registerOre("cropSpanishMoss",new ItemStack(com.emoniph.witchery.Witchery.Blocks.SPANISH_MOSS));
-			OreDictionary.registerOre("cropEmberMoss",new ItemStack(com.emoniph.witchery.Witchery.Blocks.EMBER_MOSS));
-			
-			//Seeds
-			OreDictionary.registerOre("seedWaterArtichoke", new ItemStack(com.emoniph.witchery.Witchery.Items.SEEDS_ARTICHOKE));
-			OreDictionary.registerOre("seedWolfsBane", new ItemStack(com.emoniph.witchery.Witchery.Items.SEEDS_WOLFSBANE));
-			OreDictionary.registerOre("seedMandrake", new ItemStack(com.emoniph.witchery.Witchery.Items.SEEDS_MANDRAKE));
-			OreDictionary.registerOre("seedSnowbell", new ItemStack(com.emoniph.witchery.Witchery.Items.SEEDS_SNOWBELL));
-			OreDictionary.registerOre("seedBelladonna", new ItemStack(com.emoniph.witchery.Witchery.Items.SEEDS_BELLADONNA));
-			
-			OreDictionary.registerOre("listAllseed", new ItemStack(com.emoniph.witchery.Witchery.Items.SEEDS_ARTICHOKE));
-			OreDictionary.registerOre("listAllseed", new ItemStack(com.emoniph.witchery.Witchery.Items.SEEDS_WOLFSBANE));
-			OreDictionary.registerOre("listAllseed", new ItemStack(com.emoniph.witchery.Witchery.Items.SEEDS_MANDRAKE));
-			OreDictionary.registerOre("listAllseed", new ItemStack(com.emoniph.witchery.Witchery.Items.SEEDS_SNOWBELL));
-			OreDictionary.registerOre("listAllseed", new ItemStack(com.emoniph.witchery.Witchery.Items.SEEDS_BELLADONNA));
-			
-			//items
-			//OreDictionary.registerOre("itemWaterArtichoke", new ItemStack(com.emoniph.witchery.Witchery.Items.GENERIC,1,69));
-			OreDictionary.registerOre("cropArtichoke", new ItemStack(com.emoniph.witchery.Witchery.Items.GENERIC,1,69));
-			OreDictionary.registerOre("itemWolfsBane", new ItemStack(com.emoniph.witchery.Witchery.Items.GENERIC,1,156));
-			OreDictionary.registerOre("itemMandrake", new ItemStack(com.emoniph.witchery.Witchery.Items.GENERIC,1,22));
-			OreDictionary.registerOre("itemSnowbell", new ItemStack(com.emoniph.witchery.Witchery.Items.GENERIC,1,78));
-			OreDictionary.registerOre("itemBelladonna", new ItemStack(com.emoniph.witchery.Witchery.Items.GENERIC,1,21));
-			//OreDictionary.registerOre("itemGypsum",new ItemStack(com.emoniph.witchery.Witchery.Items.GENERIC,1,17));
-			 
-			//dusts
-			//OreDictionary.registerOre("dustQuicklime",new ItemStack(com.emoniph.witchery.Witchery.Items.GENERIC,1,16));
-			
-			if (ModsLoaded.BoP) {
-				OreDictionary.registerOre("cropEyebulb",new ItemStack(BOPCBlocks.flowers,1,13));
-				OreDictionary.registerOre("cropEyebulb",new ItemStack(BOPCBlocks.flowers,1,14));
-				}
-			
+		if (ModsLoaded.BoP){
+			RegisterBoP.register();
+		}
+		
+		if (ModsLoaded.Natura) {
+			RegisterNatura.register();
+		}
+		
+	 	if (ModsLoaded.witchery) {
+	 		RegisterWitchery.register();
+	 	}
+	
+	 	if (!OreDictionary.getOres("cropBlackberry").isEmpty())
 			for (int i=0;i<OreDictionary.getOres("cropBlackberry").size();i++)
 				if (!OreDictionary.getOres("listAllberry").contains(OreDictionary.getOres("cropBlackberry").get(i)))
 				OreDictionary.registerOre("listAllberry", OreDictionary.getOres("cropBlackberry").get(i));
+	 	if (!OreDictionary.getOres("cropBlueberry").isEmpty())
 			for (int i=0;i<OreDictionary.getOres("cropBlueberry").size();i++)
 				if (!OreDictionary.getOres("listAllberry").contains(OreDictionary.getOres("cropBlueberry").get(i)))
 				OreDictionary.registerOre("listAllberry", OreDictionary.getOres("cropBlueberry").get(i));
+	 	if (!OreDictionary.getOres("cropGooseberry").isEmpty())
 			for (int i=0;i<OreDictionary.getOres("cropGooseberry").size();i++)
 				if (!OreDictionary.getOres("listAllberry").contains(OreDictionary.getOres("cropGooseberry").get(i)))
 				OreDictionary.registerOre("listAllberry", OreDictionary.getOres("cropGooseberry").get(i));
+	 	if (!OreDictionary.getOres("cropRaspberry").isEmpty())
 			for (int i=0;i<OreDictionary.getOres("cropRaspberry").size();i++)
 				if (!OreDictionary.getOres("listAllberry").contains(OreDictionary.getOres("cropRaspberry").get(i)))
 				OreDictionary.registerOre("listAllberry", OreDictionary.getOres("cropRaspberry").get(i));
+	 	if (!OreDictionary.getOres("cropStrawberry").isEmpty())
 			for (int i=0;i<OreDictionary.getOres("cropStrawberry").size();i++)
 				if (!OreDictionary.getOres("listAllberry").contains(OreDictionary.getOres("cropStrawberry").get(i)))
 				OreDictionary.registerOre("listAllberry", OreDictionary.getOres("cropStrawberry").get(i));
-		 	}
 		 	
 		 isregistered=true;
 		 CropLoadCore.CLClogger.info("Plants registered to OreDict.");

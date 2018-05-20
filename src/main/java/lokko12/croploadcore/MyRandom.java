@@ -1,6 +1,6 @@
 package lokko12.croploadcore;
 
-import java.util.Random;
+import java.util.SplittableRandom;
 
 public class MyRandom {
 	
@@ -12,7 +12,7 @@ public class MyRandom {
 			min = a;
 			max = b;
 		}
-		Random random = new Random();
+		SplittableRandom random = new SplittableRandom();
 		return random.nextInt((max-min)+1)+min;
 		}
 	
@@ -24,8 +24,8 @@ public class MyRandom {
 			min = a;
 			max = b;
 		}
-		Random random = new Random();
-		return min + random.nextFloat()*(max-min);
+		SplittableRandom random = new SplittableRandom();
+		return (float) (min + random.nextDouble()*(max-min));
 		}
 	
 }

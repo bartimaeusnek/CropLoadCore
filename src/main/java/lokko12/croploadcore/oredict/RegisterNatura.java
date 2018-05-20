@@ -1,0 +1,17 @@
+package lokko12.croploadcore.oredict;
+
+import mods.natura.common.NContent;
+import net.minecraft.item.ItemStack;
+import net.minecraftforge.oredict.OreDictionary;
+
+public class RegisterNatura {
+	public static void register() {
+		OreDictionary.registerOre("cropSaguaroBerry", new ItemStack(NContent.seedFood,1,0));
+	 	OreDictionary.registerOre("listAllberry", new ItemStack(NContent.seedFood,1,0));
+	 	OreDictionary.registerOre("cropGooseberry",new ItemStack(NContent.berryItem,1,3));
+	 	OreDictionary.registerOre("cropCacti",new ItemStack(NContent.saguaro));
+	 	OreDictionary.registerOre("cropSaguaro",new ItemStack(NContent.saguaro));
+	 	OreDictionary.registerOre("cropVine",new ItemStack(NContent.thornVines));
+		OreDictionary.registerOre("cropThornVines",new ItemStack(NContent.thornVines));
+	}
+}
