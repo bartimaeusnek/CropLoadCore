@@ -13,6 +13,7 @@ import com.github.bartimaeusnek.ASM.CropStickTransformer_plugin;
 
 import cpw.mods.fml.common.DummyModContainer;
 import cpw.mods.fml.common.LoadController;
+import cpw.mods.fml.common.Loader;
 import cpw.mods.fml.common.MetadataCollection;
 import cpw.mods.fml.common.MetadataCollection.ArtifactVersionAdapter;
 import cpw.mods.fml.common.Mod;
@@ -29,7 +30,7 @@ import cpw.mods.fml.common.versioning.VersionRange;
 
 @Mod(
 		modid = CropLoadCore.MODID, name = CropLoadCore.MODNAME, version = CropLoadCore.VERSION,
-		dependencies = "after:GalacticraftCore; after:GalacticraftPlanets; after:IC2; after:Mantle; after:Natura; after:TConstruct; after:BiomesOPlenty; after:Thaumcraft; after:ExtraTrees; after:witchery; after:gregtech; after:dreamcraft"
+		dependencies = "after:Ztones; after:GalacticraftCore; after:GalacticraftPlanets; after:IC2; after:Mantle; after:Natura; after:TConstruct; after:BiomesOPlenty; after:Thaumcraft; after:ExtraTrees; after:witchery; after:gregtech; after:dreamcraft"
 		)
 
 
