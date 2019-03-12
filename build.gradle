@@ -25,11 +25,17 @@ targetCompatibility = JavaVersion.VERSION_1_8
 sourceCompatibility = 1.8
 targetCompatibility = 1.8
 
-version = "0.1.1"
+
 
 group= "com.github.bartimaeusnek.croploadcore" // http://maven.apache.org/guides/mini/guide-naming-conventions.html
 archivesBaseName = "CropLoadCore"
 
+file "build.properties" withReader {
+    def prop = new Properties()
+    prop.load(it)
+    project.ext.config = new ConfigSlurper().parse prop
+}
+version = config.croploadcore.version
 minecraft {
     version = "1.7.10-10.13.4.1614-1.7.10"
     runDir = "eclipse"
@@ -44,11 +50,7 @@ jar {
         attributes 'FMLCorePluginContainsFMLMod': 'true'
     }
 }
-file "build.properties" withReader {
-    def prop = new Properties()
-    prop.load(it)
-    ext.config = new ConfigSlurper().parse prop
-}
+
 
 repositories {
     mavenLocal()
@@ -96,6 +98,15 @@ tasks.setupCIWorkspace.dependsOn getGregTech
 tasks.setupDevWorkspace.dependsOn getGregTech
 tasks.setupDecompWorkspace.dependsOn getGregTech
 tasks.compileJava.dependsOn getGregTech
+
+task devJar(type: Jar) {
+    from sourceSets.main.output
+    classifier = 'dev'
+}
+
+artifacts {
+    archives devJar
+}
 
 processResources
 {
