@@ -5,9 +5,15 @@ import biomesoplenty.api.content.BOPCItems;
 import net.minecraft.item.ItemStack;
 import net.minecraftforge.oredict.OreDictionary;
 
-public class RegisterBoP {
-    public static void register() {
+public class RegisterBoP implements OreDictRegistrator {
 
+    @Override
+    public String getModWhichRegisters() {
+        return "BiomesOPlenty";
+    }
+
+    @Override
+    public void run() {
         OreDictionary.registerOre("cropGrass", new ItemStack(BOPCBlocks.plants, 1, 0));
         OreDictionary.registerOre("cropGrass", new ItemStack(BOPCBlocks.plants, 1, 1));
         OreDictionary.registerOre("cropGrass", new ItemStack(BOPCBlocks.plants, 1, 2));
@@ -31,7 +37,5 @@ public class RegisterBoP {
         OreDictionary.registerOre("listAllberry", new ItemStack(BOPCItems.food, 1, 0));
         OreDictionary.registerOre("cropEyebulb", new ItemStack(BOPCBlocks.flowers, 1, 13));
         OreDictionary.registerOre("cropEyebulb", new ItemStack(BOPCBlocks.flowers, 1, 14));
-
     }
-
 }

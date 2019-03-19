@@ -74,25 +74,12 @@ public class OreDict {
     public static boolean register() {
 
         if (!isregistered) {
-            if (ModsLoaded.TConstruct) {
-                RegisterTinkersConstruct.register();
-            }
-
-            if (ModsLoaded.TC) {
-                RegisterThaumcraft.register();
-            }
-
-            if (ModsLoaded.BoP) {
-                RegisterBoP.register();
-            }
-
-            if (ModsLoaded.Natura) {
-                RegisterNatura.register();
-            }
-
-            if (ModsLoaded.witchery) {
-                RegisterWitchery.register();
-            }
+            new RegisterTinkersConstruct().register();
+            new RegisterThaumcraft().register();
+            new RegisterBoP().register();
+            new RegisterNatura().register();
+            new RegisterWitchery().register();
+            new RegisterThaumicBases().register();
 
             if (!OreDictionary.getOres("cropBlackberry").isEmpty())
                 for (int i = 0; i < OreDictionary.getOres("cropBlackberry").size(); i++)

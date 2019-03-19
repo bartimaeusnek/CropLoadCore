@@ -10,7 +10,20 @@ import org.apache.logging.log4j.Logger;
 
 @Mod(
         modid = CropLoadCore.MODID, name = CropLoadCore.MODNAME, version = CropLoadCore.VERSION,
-        dependencies = "after:Ztones; after:GalacticraftCore; after:GalacticraftPlanets; after:IC2; after:Mantle; after:Natura; after:TConstruct; after:BiomesOPlenty; after:Thaumcraft; after:ExtraTrees; after:witchery; after:gregtech; after:dreamcraft"
+        dependencies = "after:Ztones;" +
+                " after:GalacticraftCore;" +
+                " after:GalacticraftPlanets;" +
+                " after:IC2;" +
+                " after:Mantle;" +
+                " after:Natura;" +
+                " after:TConstruct;" +
+                " after:BiomesOPlenty;" +
+                " after:Thaumcraft;" +
+                " after:ExtraTrees;" +
+                " after:witchery;" +
+                " after:gregtech;" +
+                " after:dreamcraft;" +
+                " after:thaumicbases"
 )
 
 
