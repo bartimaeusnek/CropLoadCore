@@ -3,8 +3,14 @@ package com.github.bartimaeusnek.croploadcore.oredict;
 import net.minecraft.item.ItemStack;
 import net.minecraftforge.oredict.OreDictionary;
 
-public class RegisterWitchery {
-    public static void register() {
+public class RegisterWitchery implements OreDictRegistrator {
+    @Override
+    public String getModWhichRegisters() {
+        return "witchery";
+    }
+
+    @Override
+    public void run() {
         //herb
         OreDictionary.registerOre("listAllherb", new ItemStack(com.emoniph.witchery.Witchery.Items.SEEDS_GARLIC));
         OreDictionary.registerOre("listAllveggie", new ItemStack(com.emoniph.witchery.Witchery.Items.GENERIC, 1, 69));
