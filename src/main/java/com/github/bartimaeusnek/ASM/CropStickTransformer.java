@@ -148,5 +148,5 @@ public class CropStickTransformer implements IClassTransformer {
         }
 
     }
-
+  
 }

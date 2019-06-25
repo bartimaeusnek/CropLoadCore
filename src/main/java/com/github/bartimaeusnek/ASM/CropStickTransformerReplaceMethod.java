@@ -1,7 +1,9 @@
 package com.github.bartimaeusnek.ASM;
 
 import cpw.mods.fml.common.registry.GameRegistry;
+import ic2.core.IC2;
 import ic2.core.Ic2Items;
+import ic2.core.crop.IC2Crops;
 import ic2.core.crop.TileEntityCrop;
 import ic2.core.util.StackUtil;
 import net.minecraft.block.Block;
@@ -14,6 +16,7 @@ import net.minecraft.world.World;
 import net.minecraftforge.common.util.ForgeDirection;
 
 public class CropStickTransformerReplaceMethod {
+
 
     //CropBlock to be placeable on any soil
     public static boolean patchedcanPlaceBlockAt(World world, int x, int y, int z) {
@@ -42,6 +45,7 @@ public class CropStickTransformerReplaceMethod {
         TileEntity te = world.getTileEntity(x, y, z);
         if (te instanceof TileEntityCrop) {
             TileEntityCrop crop = (TileEntityCrop) te;
+          
             if (crop.getCrop() != null && crop.getCrop().tier() < 1) {
                 StackUtil.dropAsEntity(world, x, y, z, new ItemStack(Ic2Items.weed.getItem(), crop.size));
                 crop.reset();
